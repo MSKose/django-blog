@@ -128,8 +128,8 @@ import os
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # where our uploaded files will be on the file system. Whenever we upload a pic, it will be added to media directory
+MEDIA_URL = '/media/'                        # and this is how we are gonna access the images in the browser
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

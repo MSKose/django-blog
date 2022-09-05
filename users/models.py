@@ -16,13 +16,13 @@ class Profile(models.Model):
     
     # default: if the user does not pick up a image, default it to default.jpg I will provide
     # upload_to: the directory images will be uploaded to
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics') # with our MEDIA_ROOT set to media in settings.py, profile_pics directory will be created in media directory
 
     def __str__(self):
         return f"{self.user.username} Profile"
 
-    def save(self):   # this gets run after our model is saved. We want to add functionality to it
-        super().save()  # this already will have run everytime an instance is saved. What we want to add is the follwing for pictures:
+    def save(self, *args, **kwargs):   # this gets run after our model is saved. We want to add functionality to it
+        super().save(*args, **kwargs)  # this already will run everytime an instance is saved. What we want to add is the follwing for pictures:
 
         img = Image.open(self.image.path)
 
